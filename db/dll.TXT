@@ -1,0 +1,8 @@
+CREATE TABLE Announcement (Id int(10) NOT NULL AUTO_INCREMENT, Company_name varchar(255) NOT NULL, description varchar(255) NOT NULL, working_conditions varchar(255) NOT NULL, expect_salary int(10) NOT NULL, deadline date NOT NULL, MajorId int(10) NOT NULL, PRIMARY KEY (Id));
+CREATE TABLE Major (Id int(10) NOT NULL AUTO_INCREMENT, name varchar(255) NOT NULL UNIQUE, PRIMARY KEY (Id));
+CREATE TABLE `User` (name varchar(255) NOT NULL, email varchar(255) NOT NULL, mobile int(13) NOT NULL UNIQUE, experience varchar(255) NOT NULL, language varchar(255) NOT NULL, brief_bio varchar(255) NOT NULL, study varchar(255) NOT NULL, id int(10) NOT NULL AUTO_INCREMENT, password varchar(255) NOT NULL, MajorId int(10) NOT NULL, PRIMARY KEY (id));
+CREATE TABLE User_Announcement (Userid int(10) NOT NULL, AnnouncementId int(10) NOT NULL, PRIMARY KEY (Userid, AnnouncementId));
+ALTER TABLE Announcement ADD CONSTRAINT FKAnnounceme111596 FOREIGN KEY (MajorId) REFERENCES Major (Id);
+ALTER TABLE `User` ADD CONSTRAINT FKUser568102 FOREIGN KEY (MajorId) REFERENCES Major (Id);
+ALTER TABLE User_Announcement ADD CONSTRAINT FKUser_Annou633751 FOREIGN KEY (AnnouncementId) REFERENCES Announcement (Id);
+ALTER TABLE User_Announcement ADD CONSTRAINT FKUser_Annou163571 FOREIGN KEY (Userid) REFERENCES `User` (id);
